@@ -3,49 +3,72 @@ import Sidenav from './templates/sidenav';
 import Topnav from './templates/Topnav';
 import axios from '../utils/axios';
 import Header from './templates/Header';
-import { RiH1 } from 'react-icons/ri';
+import HorizontalCards from './templates/HorizontalCards';
 const Home = () => {
   const [wallpaper, setWallpaper] = useState(null);
+  const [trendingMovie, settrendingMovie] = useState(null);
+  const [trendingTv, settrendingTv] = useState(null);
   const getHeaderwallpaper = async () => {
     try {
       const [moviesResponse, tvResponse] = await Promise.all([
         axios.get(
-          `https://api.themoviedb.org/3/trending/movie/day?api_key=YOUR_API_KEY`
+          `https://api.themoviedb.org/3/trending/movie/day`
         ),
         axios.get(
-          `https://api.themoviedb.org/3/trending/tv/day?api_key=YOUR_API_KEY`
+          `https://api.themoviedb.org/3/trending/tv/day`
         ),
       ]);
 
       const moviesData = moviesResponse.data;
       const tvData = tvResponse.data;
 
-      // Combine results and choose a random wallpaper
       const combinedTrending = [...moviesData.results, ...tvData.results];
       const randomWallpaper =
         combinedTrending[Math.floor(Math.random() * combinedTrending.length)];
 
       setWallpaper(randomWallpaper);
-      // console.log("Selected Wallpaper Data:", randomWallpaper);
+      
     } catch (error) {
       console.error("Error fetching trending data:", error);
     }
   };
-  // console.log(wallpaper);
+  const getTrendingMovie = async () => {
+    try {
+      const { data } = await axios.get(`/trending/all/day`);
+      
+      settrendingMovie(data.results);
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
+  const getTrendingTv = async () => {
+    try {
+      const { data } = await axios.get(`/tv/airing_today`);
 
+      settrendingTv(data.results);
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
   useEffect(() => {
     (!wallpaper && getHeaderwallpaper());
-    // console.log(wallpaper);
+    (!trendingMovie && getTrendingMovie());
+    (!trendingTv && getTrendingTv());
   }, []);
-  return wallpaper?(
+  return wallpaper && trendingMovie ? (
     <>
-        <Sidenav/>
-        <div className='w-[80%] h-full '>
-          <Topnav/>
-          <Header data={wallpaper}/>
-        </div>
+      <Sidenav />
+      <div className="w-[80%] h-full overflow-auto overflow-x-hidden scrollbar-custom">
+        <Topnav />
+        <Header data={wallpaper} />
+        <HorizontalCards data={trendingMovie} title={"Trending"} />
+        <hr className="border-[1px] border-zinc-700" />
+        <HorizontalCards data={trendingTv} title={"Airing Today"} />
+      </div>
     </>
-  ):<h1>Loading</h1>
+  ) : (
+    <h1>Loading</h1>
+  );
 }
 
 export default Home

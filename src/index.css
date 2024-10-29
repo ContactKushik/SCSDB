@@ -28,3 +28,22 @@ body{
   /* Optional: make the scrollbar thumb rounded */
    /* Optional: adds a bit of space around the thumb */
 }
+/* Add this CSS to your main stylesheet */
+
+.fade-enter {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 1s;
+}
+.no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+     /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+    }
