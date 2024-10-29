@@ -21,7 +21,7 @@ const Topnav = () => {
     }, [query]);
 
     return (
-      <div className="w-full h-[10vh] relative flex justify-center items-center gap-2">
+      <div className="w-full h-[10vh] relative flex justify-center items-center gap-2 ">
         <div className="relative w-[70%]">
           {/* Wrapping icon and input in a flex container */}
           <div className="flex items-center relative">
