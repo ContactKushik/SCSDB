@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Dropdown from "./Dropdown";
 
-const HorizontalCards = ({ data, title }) => {
+const HorizontalCards = ({ data, title,fnc }) => {
   console.log(data);
   return (
     <div className="min-h-[40dvh] w-full p-5 ">
-      <div className="mb-5">
-        <h1 className="text-3xl font-semibold text-zinc-300">{title}</h1>
-      </div>
+      
 
       <div className="w-full flex overflow-x-auto overflow-visible no-scrollbar">
         {data.map((ele, i) => (
