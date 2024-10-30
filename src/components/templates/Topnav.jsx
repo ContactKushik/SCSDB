@@ -42,7 +42,7 @@ const Topnav = () => {
           </div>
 
           {/* Dropdown div */}
-          <div className="absolute w-full max-h-[50vh] bg-zinc-700 top-[89%] mt-2 rounded shadow-lg overflow-auto scrollbar-custom">
+          <div className="z-50 absolute w-full max-h-[50vh] bg-zinc-700 top-[89%] mt-2 rounded shadow-lg overflow-auto scrollbar-custom">
             {searches &&
               searches.map((s, i) => (
                 <Link
