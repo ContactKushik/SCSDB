@@ -11,14 +11,14 @@ const Home = () => {
   const [wallpaper, setWallpaper] = useState(null);
   const [trending, setTrending] = useState(null);
   const [category, setCategory] = useState("all");
-
+  
   const getHeaderWallpaper = async () => {
     try {
       const [moviesResponse, tvResponse] = await Promise.all([
         axios.get(`https://api.themoviedb.org/3/trending/movie/day`),
         axios.get(`https://api.themoviedb.org/3/trending/tv/day`),
       ]);
-
+      
       const moviesData = moviesResponse.data;
       const tvData = tvResponse.data;
       const combinedTrending = [...moviesData.results, ...tvData.results];
@@ -33,6 +33,7 @@ const Home = () => {
   const getTrending = async () => {
     try {
       const { data } = await axios.get(`/trending/${category}/day`);
+      console.log(data);
       setTrending(data.results);
     } catch (error) {
       console.log("Error: ", error);
