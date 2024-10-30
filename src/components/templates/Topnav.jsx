@@ -1,7 +1,7 @@
 import axios from "../../utils/axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import Loader from "./Loader"
 const Topnav = () => {
     const [query, setquery] = useState("");
     const [searches, setsearches] = useState(null);
@@ -20,7 +20,7 @@ const Topnav = () => {
         getSearches();
     }, [query]);
 
-    return (
+    return searches ? (
       <div className="w-full h-[10vh] relative flex justify-center items-center gap-2 ">
         <div className="relative w-[70%]">
           {/* Wrapping icon and input in a flex container */}
@@ -73,7 +73,7 @@ const Topnav = () => {
           </div>
         </div>
       </div>
-    );
+    ):(<Loader/>);
 };
 
 export default Topnav;
