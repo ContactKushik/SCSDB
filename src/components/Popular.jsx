@@ -6,6 +6,7 @@ import Card from './templates/Card';
 import Dropdown from './templates/Dropdown';
 import Sidenav from './templates/sidenav';
 import Topnav from './templates/Topnav';
+import Loader from './templates/Loader';
 
 const Popular = () => {
     const navigate = useNavigate();
@@ -41,7 +42,7 @@ const Popular = () => {
       setHasMore(true); // Reset the hasMore state
       getTrending();
     }, [category]);
-  return (
+  return popular ?(
     <>
       <Sidenav />
       <div
@@ -54,14 +55,14 @@ const Popular = () => {
             <h1 className="text-3xl font-semibold flex items-end gap-3">
               <i
                 className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
-                onClick={() => navigate(-1)}
+                onClick={() => navigate("/")}
               ></i>
-              Popular {category.charAt(0).toUpperCase()+category.slice(1)}s
+              Popular {category.charAt(0).toUpperCase() + category.slice(1)}s
             </h1>
             <div className="flex gap-2">
               <Dropdown
                 options={["movie", "tv"]}
-                func={(e) => setCategory(e.target.value)} // Set category on change
+                func={(e) => setCategory(e.target.value)}
                 title={"category"}
               />
             </div>
@@ -73,7 +74,7 @@ const Popular = () => {
             dataLength={popular.length}
             next={getTrending}
             hasMore={hasMore}
-            className="mt-2 flex flex-wrap gap-5 justify-center items-start shrink-0"
+            className=""
             scrollableTarget="scrollableDiv"
           >
             <Card data={popular} />
@@ -81,7 +82,7 @@ const Popular = () => {
         </div>
       </div>
     </>
-  );
+  ):(<Loader/>);
 }
 
 export default Popular

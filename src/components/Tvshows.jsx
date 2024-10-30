@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from "react";
-import Topnav from "./templates/Topnav";
-import Sidenav from "./templates/sidenav";
 import { useNavigate } from "react-router-dom";
-import Dropdown from "./templates/Dropdown";
+import Sidenav from "./templates/sidenav";
 import axios from "../utils/axios";
-import Card from "./templates/Card";
+import Topnav from "./templates/Topnav";
+import Dropdown from "./templates/Dropdown";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Card from "./templates/Card";
+import Loader from "./templates/Loader";
 
-const Trending = () => {
+const Tvshows = () => {
   const navigate = useNavigate();
-  const [category, setCategory] = useState("all");
-  const [duration, setDuration] = useState("day");
-  const [trending, setTrending] = useState([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true); // To control the loading more logic
+  const [category, setCategory] = useState("top_rated");
 
-  const getTrending = async () => {
+  // const [duration, setDuration] = useState("day");
+  const [tv, setTv] = useState([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+
+  const getMovie = async () => {
     try {
-      const { data } = await axios.get(`/trending/${category}/${duration}`, {
+      const { data } = await axios.get(`/tv/${category}`, {
         params: { page },
       });
 
-      // If there are results, append them to trending, otherwise set hasMore to false
+      // If there are results, append them to tv, otherwise set hasMore to false
       if (data.results.length > 0) {
-        setTrending((prev) => [...prev, ...data.results]);
+        console.log(data);
+        setTv((prev) => [...prev, ...data.results]);
         setPage((prevPage) => prevPage + 1); // Increment page for the next fetch
       } else {
         setHasMore(false); // No more data to load
@@ -34,14 +37,13 @@ const Trending = () => {
   };
 
   useEffect(() => {
-    // Resetting trending data and page on category or duration change
-    setTrending([]);
+    // Resetting tv data and page on category or duration change
+    setTv([]);
     setPage(1);
     setHasMore(true); // Reset the hasMore state
-    getTrending();
-  }, [category, duration]); // Dependencies trigger fetch on change
-
-  return trending?(
+    getMovie();
+  }, [category]);
+  return tv? (
     <>
       <Sidenav />
       <div
@@ -56,18 +58,16 @@ const Trending = () => {
                 className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
                 onClick={() => navigate("/")}
               ></i>
-              Trending
+              tv
+              <span className="text-zinc-600">
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </span>
             </h1>
             <div className="flex gap-2">
               <Dropdown
-                options={["all", "movie", "tv"]}
-                func={(e) => setCategory(e.target.value)} // Set category on change
+                options={["airing_today", "on_the_air", "popular", "top_rated"]}
+                func={(e) => setCategory(e.target.value)}
                 title={"category"}
-              />
-              <Dropdown
-                options={["day", "week"]}
-                func={(e) => setDuration(e.target.value)} // Set duration on change
-                title={"duration"}
               />
             </div>
           </div>
@@ -75,18 +75,18 @@ const Trending = () => {
         <div>
           <InfiniteScroll
             loader={<h1>Loading...</h1>}
-            dataLength={trending.length}
-            next={getTrending}
+            dataLength={tv.length}
+            next={getMovie}
             hasMore={hasMore}
-    
+            className=""
             scrollableTarget="scrollableDiv"
           >
-            <Card data={trending} />
+            <Card data={tv} />
           </InfiniteScroll>
         </div>
       </div>
     </>
-  ):(<Loader />);
+  ):(<Loader/>);
 };
 
-export default Trending;
+export default Tvshows;
