@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Topnav from "./templates/Topnav";
-import Sidenav from "./templates/sidenav";
+import Sidenav from "./templates/Sidenav";
 import { useNavigate } from "react-router-dom";
 import Dropdown from "./templates/Dropdown";
 import axios from "../utils/axios";
