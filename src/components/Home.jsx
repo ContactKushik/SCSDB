@@ -50,7 +50,7 @@ const Home = () => {
       <div className="w-[80%] h-full overflow-auto overflow-x-hidden scrollbar-custom">
         <Topnav />
         <Header data={wallpaper} />
-        <div className="mb-5 flex justify-between p-5">
+        <div className=" flex justify-between p-5">
           <h1 className="text-3xl font-semibold text-zinc-300">Trending</h1>
           <Dropdown
             title="filter"
