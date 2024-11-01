@@ -81,7 +81,7 @@ const Tvshows = () => {
             className=""
             scrollableTarget="scrollableDiv"
           >
-            <Card data={tv} />
+            <Card data={tv} title="tv"/>
           </InfiniteScroll>
         </div>
       </div>

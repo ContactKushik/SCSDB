@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 
 const HorizontalCards = ({ data, title,fnc }) => {
-  console.log(data);
+  
   return (
     <div className="min-h-[40dvh] w-full p-5 ">
       
 
       <div className="w-full flex overflow-x-auto overflow-visible no-scrollbar">
         {data.map((ele, i) => (
-          <div
+          <Link
+            to={`/${ele.media_type}/details/${ele.id}`}
             key={i}
             className="min-w-[24%] mr-5 min-h-[30dvh] bg-zinc-900 rounded overflow-hidden shadow-lg shadow-zinc-900"
           >
@@ -39,11 +40,11 @@ const HorizontalCards = ({ data, title,fnc }) => {
                     }`
                   : "Data not available"}{" "}
                 {ele.overview && ele.overview.length > 200 && (
-                  <Link className="text-blue-500">more</Link>
+                  <span className="text-blue-500">more</span>
                 )}
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

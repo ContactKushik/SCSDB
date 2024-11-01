@@ -77,7 +77,7 @@ const Popular = () => {
             className=""
             scrollableTarget="scrollableDiv"
           >
-            <Card data={popular} />
+            <Card data={popular} title={category}/>
           </InfiniteScroll>
         </div>
       </div>

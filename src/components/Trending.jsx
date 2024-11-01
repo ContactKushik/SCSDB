@@ -8,13 +8,14 @@ import Card from "./templates/Card";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const Trending = () => {
+  
   const navigate = useNavigate();
   const [category, setCategory] = useState("all");
   const [duration, setDuration] = useState("day");
   const [trending, setTrending] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true); // To control the loading more logic
-
+  // console.log(trending);
   const getTrending = async () => {
     try {
       const { data } = await axios.get(`/trending/${category}/${duration}`, {
@@ -81,7 +82,7 @@ const Trending = () => {
     
             scrollableTarget="scrollableDiv"
           >
-            <Card data={trending} />
+            <Card data={trending} title={category}/>
           </InfiniteScroll>
         </div>
       </div>

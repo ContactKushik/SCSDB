@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-const Card = ({data}) => {
+const Card = ({data,title}) => {
+   useEffect(() => {
+     console.log(title); // This will run only once when the component mounts
+   }, [title]);
+  
     const noimg =
       "https://cdn.vectorstock.com/i/500p/82/99/no-image-available-like-missing-picture-vector-43938299.jpg";
   return (
     <>
       <div className="mt-2 flex flex-wrap gap-5 justify-center items-start shrink-0 overflow-x-hidden">
         {data.map((c, i) => (
-          <Link key={i} className="w-[30vh] flex-none shrink-0 relative">
+          <Link to={`/${c.media_type||title}/details/${c.id}`} key={i} className="w-[30vh] flex-none shrink-0 relative">
             <img
               src={
                 c.poster_path || c.backdrop_path || c.profile_path

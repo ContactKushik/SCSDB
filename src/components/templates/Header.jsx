@@ -29,7 +29,7 @@ const Header = ({ data }) => {
         {data.overview
           ? `${data.overview.slice(0, 200)}...`
           : "Data not available"}{" "}
-        <Link className="text-blue-500">more</Link>
+        <Link to={`/${data.media_type}/details/${data.id}`} className="text-blue-500">more</Link>
       </p>
       
       <p className="mt-2">

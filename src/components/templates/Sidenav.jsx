@@ -19,10 +19,10 @@ const Sidenav = () => {
         <NavLink to="/movies" className="hover:bg-[#6556CD] hover:text-white p-5 text-zinc-300 rounded-md duration-200">
           <i className="ri-movie-2-line mr-2"></i>Movies
         </NavLink>
-        <NavLink to="/tv_shows" className="hover:bg-[#6556CD] hover:text-white p-5 text-zinc-300 rounded-md duration-200">
+        <NavLink to="/tv" className="hover:bg-[#6556CD] hover:text-white p-5 text-zinc-300 rounded-md duration-200">
           <i className="ri-tv-2-line mr-1"></i>TV Shows
         </NavLink>
-        <NavLink to="/celebrities" className="hover:bg-[#6556CD] hover:text-white p-5 text-zinc-300 rounded-md duration-200">
+        <NavLink to="/person" className="hover:bg-[#6556CD] hover:text-white p-5 text-zinc-300 rounded-md duration-200">
           <i className="ri-team-line mr-1"></i>People
         </NavLink>
       </nav>

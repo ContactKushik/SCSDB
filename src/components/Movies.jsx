@@ -80,7 +80,7 @@ const Movies = () => {
           
             scrollableTarget="scrollableDiv"
           >
-            <Card data={movie} />
+            <Card data={movie} title="movie"/>
           </InfiniteScroll>
         </div>
       </div>
