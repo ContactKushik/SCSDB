@@ -24,7 +24,7 @@ const People = () => {
 
         // If there are results, append them to people, otherwise set hasMore to false
         if (data.results.length > 0) {
-            console.log(data);
+         
           setPeople((prev) => [...prev, ...data.results]);
           setPage((prevPage) => prevPage + 1); // Increment page for the next fetch
         } else {

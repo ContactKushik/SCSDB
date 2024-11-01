@@ -25,7 +25,7 @@ const Tvshows = () => {
 
       // If there are results, append them to tv, otherwise set hasMore to false
       if (data.results.length > 0) {
-        console.log(data);
+        
         setTv((prev) => [...prev, ...data.results]);
         setPage((prevPage) => prevPage + 1); // Increment page for the next fetch
       } else {

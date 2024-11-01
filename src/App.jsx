@@ -6,6 +6,8 @@ import Popular from './components/Popular'
 import Movies from './components/Movies'
 import Tvshows from './components/Tvshows'
 import People from './components/People'
+import About from './components/templates/About'
+import ContactUs from './components/templates/ContactUs'
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
         <Route path="/movies" element={<Movies />}></Route>
         <Route path="/tv_shows" element={<Tvshows />}></Route>
         <Route path="/celebrities" element={<People />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/contact" element={<ContactUs />}></Route>
       </Routes>
     </div>
   );

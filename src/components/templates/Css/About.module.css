@@ -1,0 +1,45 @@
+.aboutSection {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.backgroundSpline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  filter: brightness(27%);
+}
+
+.tintOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(101, 86, 205, 0.2); /* Purple tint */
+  z-index: 1.5; /* Places it above Spline but below main content */
+}
+
+.mainContent {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  /* padding: 20px; */
+  pointer-events: none; /* Allows interaction with elements behind it */
+}
+
+.overlay, .text, .mainContent h1, .mainContent p, .mainContent i {
+  pointer-events: auto; /* Restores interactivity for specific elements */
+}
+
+.text {
+  /* font-size: 2rem; */
+}
+.ccc{
+    background-color: rgba(101, 86, 205, 0.2); 
+}
