@@ -2,9 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const Card = ({data,title}) => {
-   useEffect(() => {
-     console.log(title); // This will run only once when the component mounts
-   }, [title]);
+   
   
     const noimg =
       "https://cdn.vectorstock.com/i/500p/82/99/no-image-available-like-missing-picture-vector-43938299.jpg";

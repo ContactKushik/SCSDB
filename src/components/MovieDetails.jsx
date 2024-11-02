@@ -22,7 +22,7 @@ const MovieDetails = () => {
   }, [dispatch, id]);
 
   const { info } = useSelector((state) => state.movie);
-  console.log(info);
+  
 
   useEffect(() => {
     if (info && info.externalid && info.externalid.imdb_id) {
@@ -34,7 +34,7 @@ const MovieDetails = () => {
         "https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";
       script.id = "imdb-rating-api";
       script.async = true;
-      script.onload = () => console.log("IMDb widget loaded successfully");
+
       document.body.appendChild(script);
     }
   }, [info && info.externalid && info.externalid.imdb_id]);

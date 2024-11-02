@@ -23,7 +23,7 @@ const PersonDetails = () => {
   }, [dispatch, id]);
 
   const { info } = useSelector((state) => state.person);
-  console.log(info);
+
   const [category, setCategory] = useState("movie");
   return info ? (
     <>
