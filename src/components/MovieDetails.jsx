@@ -137,9 +137,19 @@ const MovieDetails = () => {
               <h6 className="text-sm max-w-full overflow-hidden break-words mt-1">
                 {info.translations.join(", ")}
               </h6>
-              <Link to={`${pathname}/trailer`} className="mt-5 bg-[#6556CD] w-fit px-5 py-2 rounded-md">
-                Play Trailer
-              </Link>
+              {info.videos ? (
+                <Link
+                  to={`${pathname}/trailer`}
+                  className="mt-5 bg-[#6556CD] w-fit px-5 py-2 rounded-md flex items-center"
+                >
+                  <i className="ri-play-circle-fill text-3xl font-normal"></i>
+                  &nbsp; Play Trailer
+                </Link>
+              ) : (
+                <h1 className="text-xl bg-zinc-800 w-fit px-3 py-2 rounded text-zinc-400 mt-5">
+                  No Trailer Available
+                </h1>
+              )}
             </div>
           </div>
 
@@ -189,7 +199,7 @@ const MovieDetails = () => {
           </div>
 
           {/* Watch Providers */}
-          {info.watchproviders && info.watchproviders.flatrate.length > 0 && (
+          {info.watchproviders && info.watchproviders.flatrate && info.watchproviders?.flatrate.length > 0 && (
             <div className="flex gap-2 h-[10vh] mt-5">
               {info.watchproviders.flatrate.map((w, i) => (
                 <img
@@ -213,7 +223,7 @@ const MovieDetails = () => {
             }
             className="h-fit"
           />
-          <Outlet/>
+          <Outlet />
         </div>
       </div>
     </>

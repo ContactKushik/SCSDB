@@ -59,12 +59,15 @@ const Home = () => {
             func={(e) => setCategory(e.target.value)}
           />
         </div>
-        <HorizontalCards data={trending} />
+        <div className="px-5">
+          <HorizontalCards data={trending} />
+        </div>
+
         <hr className="border-[1px] border-zinc-700" />
       </div>
     </>
   ) : (
-    <Loader/>
+    <Loader />
   );
 };
 

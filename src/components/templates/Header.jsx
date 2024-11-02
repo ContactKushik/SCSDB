@@ -29,9 +29,14 @@ const Header = ({ data }) => {
         {data.overview
           ? `${data.overview.slice(0, 200)}...`
           : "Data not available"}{" "}
-        <Link to={`/${data.media_type}/details/${data.id}`} className="text-blue-500">more</Link>
+        <Link
+          to={`/${data.media_type}/details/${data.id}`}
+          className="text-blue-500"
+        >
+          more
+        </Link>
       </p>
-      
+
       <p className="mt-2">
         {data.media_type === "movie" && data.release_date && (
           <>
@@ -52,8 +57,12 @@ const Header = ({ data }) => {
           </>
         )}
       </p>
-      <Link className="mt-3 p-2 bg-[#6556CD] rounded flex items-center font-sm font-semibold ">
-        <i className="ri-play-circle-fill text-2xl font-normal"></i>&nbsp;Watch Trailer
+      <Link
+        to={`/${data.media_type}/details/${data.id}/trailer`}
+        className="mt-3 p-2 bg-[#6556CD] rounded flex items-center font-sm font-semibold "
+      >
+        <i className="ri-play-circle-fill text-2xl font-normal"></i>&nbsp;Watch
+        Trailer
       </Link>
     </div>
   );

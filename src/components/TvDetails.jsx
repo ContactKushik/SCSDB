@@ -143,12 +143,19 @@ const TvDetails = () => {
               <h6 className="text-sm max-w-full overflow-hidden break-words mt-1">
                 {info.translations.join(", ")}
               </h6>
-              <Link
-                to={`${pathname}/trailer`}
-                className="mt-5 bg-[#6556CD] w-fit px-5 py-2 rounded-md"
-              >
-                Play Trailer
-              </Link>
+              {info.videos ? (
+                <Link
+                  to={`${pathname}/trailer`}
+                  className="mt-5 bg-[#6556CD] w-fit px-5 py-2 rounded-md flex items-center"
+                >
+                  <i className="ri-play-circle-fill text-3xl font-normal"></i>
+                  &nbsp; Play Trailer
+                </Link>
+              ) : (
+                <h1 className="text-xl bg-zinc-800 w-fit px-3 py-2 rounded text-zinc-400 mt-5">
+                  No Trailer Available
+                </h1>
+              )}
             </div>
           </div>
 
@@ -211,9 +218,7 @@ const TvDetails = () => {
             </div>
           )}
           <hr className="border-[1px] border-zinc-700 mt-5" />
-          <h1 className="text-3xl font-semibold text-zinc-400 mb-5">
-            Seasons
-          </h1>
+          <h1 className="text-3xl font-semibold text-zinc-400 mb-5">Seasons</h1>
           <div className="flex overflow-x-auto no-scrollbar gap-5 overflow-y-hidden">
             {info.details.seasons &&
               info.details.seasons.map((season, i) => (
