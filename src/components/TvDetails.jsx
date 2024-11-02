@@ -75,7 +75,7 @@ const TvDetails = () => {
                 className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
                 onClick={() => navigate("/")}
               ></i>
-              Movie
+              TV
             </h1>
             <Topnav />
           </div>
@@ -106,7 +106,7 @@ const TvDetails = () => {
                   info.details.original_title ||
                   info.details.original_name}
                 <small className="text-normal text-2xl text-zinc-300">
-                  ({info.details.release_date.split("-")[0]})
+                  ({info.details.first_air_date.split("-")[0]})
                 </small>
               </h1>
 
@@ -126,9 +126,9 @@ const TvDetails = () => {
                   <span>User</span>
                   <span>Score</span>
                 </h3>
-                <h3 className="ml-5">Release: {info.details.release_date}</h3>
+                <h3 className="ml-5">Release: {info.details.first_air_date}</h3>
                 <h3>{info.details.genres.map((g) => g.name).join(", ")}</h3>
-                <h3>{info.details.runtime} min</h3>
+                <h3>{info.details.seasons.length} Seasons</h3>
               </div>
 
               {/* Overview Section */}
@@ -210,7 +210,30 @@ const TvDetails = () => {
               ))}
             </div>
           )}
-
+          <hr className="border-[1px] border-zinc-700 mt-5" />
+          <h1 className="text-3xl font-semibold text-zinc-400 mb-5">
+            Seasons
+          </h1>
+          <div className="flex overflow-x-auto no-scrollbar gap-5 overflow-y-hidden">
+            {info.details.seasons &&
+              info.details.seasons.map((season, i) => (
+                <div
+                  key={i}
+                  className="min-w-[25vh] text-black bg-slate-200 relative"
+                >
+                  <img
+                    src={
+                      season.poster_path
+                        ? `https://image.tmdb.org/t/p/original/${season.poster_path}`
+                        : noimg
+                    }
+                    className="w-[40vh] object-cover"
+                    alt=""
+                  />
+                </div>
+              ))}
+          </div>
+          <hr className="border-[1px] border-zinc-700 mt-5" />
           <h1 className="text-3xl font-semibold text-zinc-400 mt-5">
             Recommendation/Similar
           </h1>
