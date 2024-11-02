@@ -9,6 +9,8 @@ import HorizontalCards from "./templates/HorizontalCards";
 import Dropdown from "./templates/Dropdown";
 
 const PersonDetails = () => {
+  const noimg =
+    "https://cdn.vectorstock.com/i/500p/82/99/no-image-available-like-missing-picture-vector-43938299.jpg";
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
