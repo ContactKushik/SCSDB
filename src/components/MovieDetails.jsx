@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadmovie, removeMovie } from "../store/actions/movieActions";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import Loader from "./templates/Loader";
 import Sidenav from "./templates/Sidenav";
 import Topnav from "./templates/Topnav";
 import HorizontalCards from "./templates/HorizontalCards";
 
 const MovieDetails = () => {
+  const {pathname} =useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const MovieDetails = () => {
     <>
       <Sidenav />
       <div
-        className="w-[80%] h-full overflow-auto overflow-x-hidden scrollbar-custom"
+        className="relative w-[80%] h-full overflow-auto overflow-x-hidden scrollbar-custom"
         style={{
           background: `linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7), rgba(0,0,0,.9)), url(${backgroundUrl})`,
           backgroundPosition: "top 100%",
@@ -110,7 +111,7 @@ const MovieDetails = () => {
               {/* User Score and Info */}
               <div className="flex pt-5 px-0 gap-2 h-fit items-center">
                 {info.details.vote_average && (
-                  <div className="rounded-full text-xl font-semibold bg-[#6556CD] gap-[-10px] text-white w-[8vh] h-[8vh] flex justify-center items-center shadow-lg shadow-zinc-800 z-30">
+                  <div className="rounded-full text-xl font-semibold bg-[#6556CD] gap-[-10px] text-white w-[8vh] h-[8vh] flex justify-center items-center shadow-lg shadow-zinc-800 z-3">
                     {(info.details.vote_average * 10).toFixed()}
                     <sup className="text-sm font-bold">%</sup>
                   </div>
@@ -136,7 +137,7 @@ const MovieDetails = () => {
               <h6 className="text-sm max-w-full overflow-hidden break-words mt-1">
                 {info.translations.join(", ")}
               </h6>
-              <Link className="mt-5 bg-[#6556CD] w-fit px-5 py-2 rounded-md">
+              <Link to={`${pathname}/trailer`} className="mt-5 bg-[#6556CD] w-fit px-5 py-2 rounded-md">
                 Play Trailer
               </Link>
             </div>
@@ -212,6 +213,7 @@ const MovieDetails = () => {
             }
             className="h-fit"
           />
+          <Outlet/>
         </div>
       </div>
     </>
