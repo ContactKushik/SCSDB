@@ -9,6 +9,7 @@ import Card from "./templates/Card";
 import Loader from "./templates/Loader";
 
 const People = () => {
+  document.title = "SCSDB | People";
   const navigate = useNavigate();
     const [category, setCategory] = useState("popular");
     // const [duration, setDuration] = useState("day");

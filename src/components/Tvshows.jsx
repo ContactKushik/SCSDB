@@ -9,6 +9,7 @@ import Card from "./templates/Card";
 import Loader from "./templates/Loader";
 
 const Tvshows = () => {
+  document.title = "SCSDB | TV";  
   const navigate = useNavigate();
   const [category, setCategory] = useState("top_rated");
 

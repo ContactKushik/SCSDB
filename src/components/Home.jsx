@@ -8,6 +8,7 @@ import Dropdown from "./templates/Dropdown";
 import Loader from "./templates/Loader";
 
 const Home = () => {
+  document.title = "📺SCSDB | Home";
   const [wallpaper, setWallpaper] = useState(null);
   const [trending, setTrending] = useState(null);
   const [category, setCategory] = useState("all");

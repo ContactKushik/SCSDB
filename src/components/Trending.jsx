@@ -17,6 +17,7 @@ const Trending = () => {
   const [hasMore, setHasMore] = useState(true); // To control the loading more logic
   // console.log(trending);
   const getTrending = async () => {
+    document.title = "SCSDB | Trending";
     try {
       const { data } = await axios.get(`/trending/${category}/${duration}`, {
         params: { page },

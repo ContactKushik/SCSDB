@@ -9,6 +9,7 @@ import Topnav from './templates/Topnav';
 import Loader from './templates/Loader';
 
 const Popular = () => {
+  document.title = "SCSDB | Popular";
     const navigate = useNavigate();
     const [category, setCategory] = useState("tv");
     // const [duration, setDuration] = useState("day");

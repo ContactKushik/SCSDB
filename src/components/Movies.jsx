@@ -8,7 +8,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Card from './templates/Card';
 import Loader from './templates/Loader';
 const Movies = () => {
-  
+  document.title = "SCSDB | Movies";
     const navigate = useNavigate();
     const [category, setCategory] = useState("now_playing");
     // const [duration, setDuration] = useState("day");

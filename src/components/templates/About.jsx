@@ -9,7 +9,7 @@ import Loader from "./Loader";
 export default function About() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
-
+  document.title = "SCSDB | About";
   // Loader component or simple JSX to show while loading
   // const Loader = () => (
   //   <div className="flex justify-center items-center h-full">
