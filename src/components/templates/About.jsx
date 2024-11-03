@@ -1,27 +1,22 @@
-import Spline from "@splinetool/react-spline";
-import styles from "./Css/About.module.css";
-import Sidenav from "./Sidenav";
-import Topnav from "./Topnav";
-import { Typewriter } from "react-simple-typewriter";
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Loader from "./Loader";
+import Spline from '@splinetool/react-spline'
+import styles from './Css/About.module.css'
+import Sidenav from './Sidenav'
+import Topnav from './Topnav'
+import { Typewriter } from 'react-simple-typewriter'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import Loader from './Loader'
+
 export default function About() {
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
-  document.title = "SCSDB | About";
-  // Loader component or simple JSX to show while loading
-  // const Loader = () => (
-  //   <div className="flex justify-center items-center h-full">
-  //     <div className="text-4xl font-bold text-[#7463df]">Loading...</div>
-  //   </div>
-  // );
+  const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(true)
+  document.title = 'SCSDB | About'
 
   return (
     <>
       <Sidenav />
       <div
-        className="w-[80%] h-full overflow-auto overflow-x-hidden scrollbar-custom relative"
+        className="w-full h-full overflow-auto overflow-x-hidden scrollbar-custom relative"
         id="scrollableDiv"
       >
         {/* Render loader if still loading */}
@@ -36,34 +31,36 @@ export default function About() {
 
         {/* Render content only when Spline has loaded */}
         {!isLoading && (
-          <div className={`w-full px-10 py-5 ${styles.mainContent} h-full`}>
+          <div
+            className={`w-full px-5 sm:px-10 py-5 ${styles.mainContent} h-full`}
+          >
             <div
-              className={`flex justify-between gap-10 items-center ${styles.overlay}`}
+              className={`flex justify-between gap-5 sm:gap-10 items-center ${styles.overlay}`}
             >
               <h1
-                className={`text-4xl font-bold flex items-end gap-3 ${styles.text}`}
+                className={`text-3xl sm:text-4xl font-bold flex items-end gap-3 ${styles.text}`}
               >
                 <i
-                  className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
-                  onClick={() => navigate("/")}
+                  className="ri-arrow-left-line text-xl sm:text-2xl hover:text-[#7463df]"
+                  onClick={() => navigate('/')}
                 ></i>
                 About
               </h1>
             </div>
             <div className="w-full h-full flex flex-col justify-center items-center text-center">
               {/* Typing animation for questions */}
-              <div className="text-5xl font-semibold mb-6">
+              <div className="text-4xl sm:text-5xl font-semibold mb-6">
                 <Typewriter
                   words={[
-                    "What to Watch?",
-                    "Find your celebrity crush",
-                    "Discover your favorite Movie",
-                    "Explore Movies from around the globe",
-                    "Stay updated with the latest trends",
-                    "Dive into endless entertainment",
-                    "Discover popular TV Shows",
-                    "Explore detailed info on Celebrities",
-                    "Explore TV shows from around the globe",
+                    'What to Watch?',
+                    'Find your celebrity crush',
+                    'Discover your favorite Movie',
+                    'Explore Movies from around the globe',
+                    'Stay updated with the latest trends',
+                    'Dive into endless entertainment',
+                    'Discover popular TV Shows',
+                    'Explore detailed info on Celebrities',
+                    'Explore TV shows from around the globe',
                   ]}
                   loop={0} // Infinite loop
                   cursor
@@ -74,7 +71,7 @@ export default function About() {
                 />
               </div>
               {/* Stationary answer below the animated text */}
-              <h1 className="text-4xl font-bold text-[#7463df]">
+              <h1 className="text-3xl sm:text-4xl font-bold text-[#7463df]">
                 <i className="ri-tv-fill text-[#6556CD] mr-2"></i>SCSDB,
                 <br /> We’ve got you covered!
               </h1>
@@ -83,5 +80,5 @@ export default function About() {
         )}
       </div>
     </>
-  );
+  )
 }
