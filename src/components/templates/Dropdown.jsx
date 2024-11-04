@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Dropdown = ({title,options,func}) => {
+const Dropdown = ({ title, options, func }) => {
   return (
     <div className="select">
       <select defaultValue="0" name="format" id="format" onChange={func}>
@@ -14,7 +14,7 @@ const Dropdown = ({title,options,func}) => {
         ))}
       </select>
     </div>
-  );
+  )
 }
 
 export default Dropdown

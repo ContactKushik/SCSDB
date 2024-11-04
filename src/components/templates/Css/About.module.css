@@ -1,9 +1,49 @@
+.backgroundDesktop {
+  background-image: url('https://images.unsplash.com/photo-1677344297888-81f04aa12a60?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1vdmllc3xlbnwwfHwwfHx8MA%3D%3D');
+  background-size: cover;
+  background-position: center;
+}
+
+.backgroundMobile {
+  background-image: url('https://plus.unsplash.com/premium_photo-1698584002823-96e5c157d9ec?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGZpbG18ZW58MHx8MHx8fDA%3D');
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .backgroundResponsive {
+    background-image: url('https://plus.unsplash.com/premium_photo-1698584002823-96e5c157d9ec?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGZpbG18ZW58MHx8MHx8fDA%3D');
+  }
+}
+
+@media (min-width: 769px) {
+  .backgroundResponsive {
+    background-image: url('https://images.unsplash.com/photo-1677344297888-81f04aa12a60?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1vdmllc3xlbnwwfHwwfHx8MA%3D%3D');
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .aboutSection {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
 }
+
 
 .backgroundSpline {
   position: absolute;
@@ -21,8 +61,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(101, 86, 205, 0.2); /* Purple tint */
-  z-index: 1.5; /* Places it above Spline but below main content */
+  background-color: rgba(101, 86, 205, 0.2);
+  /* Purple tint */
+  z-index: 1.5;
+  /* Places it above Spline but below main content */
 }
 
 .mainContent {
@@ -30,16 +72,23 @@
   z-index: 2;
   color: #fff;
   /* padding: 20px; */
-  pointer-events: none; /* Allows interaction with elements behind it */
+  pointer-events: none;
+  /* Allows interaction with elements behind it */
 }
 
-.overlay, .text, .mainContent h1, .mainContent p, .mainContent i {
-  pointer-events: auto; /* Restores interactivity for specific elements */
+.overlay,
+.text,
+.mainContent h1,
+.mainContent p,
+.mainContent i {
+  pointer-events: auto;
+  /* Restores interactivity for specific elements */
 }
 
 .text {
   /* font-size: 2rem; */
 }
-.ccc{
-    background-color: rgba(101, 86, 205, 0.2); 
+
+.ccc {
+  background-color: rgba(101, 86, 205, 0.2);
 }
