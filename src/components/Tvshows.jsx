@@ -50,7 +50,27 @@ const Tvshows = () => {
         <Topnav />
         <div className="w-full px-5 py-5 sm:px-10">
           <div className="flex flex-col sm:flex-row justify-between items-center">
-            <h1 className="text-2xl sm:text-3xl font-semibold flex items-end gap-3">
+            <div className="flex justify-between w-[300px] md:w-[400px] mb-3 md:mb-0">
+              <div className="left">
+                <button
+                  className="text-1xl md:text-3xl font-semibold flex items-center md:items-end gap-1 bg-red-900 rounded-lg pr-2 pl-2"
+                  onClick={() => navigate(-1)}
+                >
+                  <i className="ri-arrow-left-line text-xl md:text-2xl hover:text-[#7463df] cursor-pointer"></i>
+                  Back
+                </button>
+              </div>
+              <div className="right">
+                {' '}
+                <h1 className="text-1xl md:text-2xl font-semibold flex items-center md:items-end gap-3">
+                  TV
+                  <span className="text-zinc-600">
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </span>
+                </h1>
+              </div>
+            </div>
+            {/* <h1 className="text-2xl sm:text-3xl font-semibold flex items-end gap-3">
               <i
                 className="ri-arrow-left-line text-xl sm:text-2xl hover:text-[#7463df]"
                 onClick={() => navigate('/')}
@@ -59,7 +79,7 @@ const Tvshows = () => {
               <span className="text-zinc-600">
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </span>
-            </h1>
+            </h1> */}
             <div className="flex gap-2">
               <Dropdown
                 options={['airing_today', 'on_the_air', 'popular', 'top_rated']}

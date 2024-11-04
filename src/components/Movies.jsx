@@ -51,7 +51,28 @@ const Movies = () => {
         <Topnav />
         <div className="w-full px-4 md:px-10 py-5">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <h1 className="text-3xl font-semibold flex items-end gap-3 mb-4 md:mb-0">
+            <div className="flex justify-between w-[300px] md:w-[400px] mb-3 md:mb-0">
+              <div className="left">
+                <button
+                  className="text-1xl md:text-3xl font-semibold flex items-center md:items-end gap-1 bg-red-900 rounded-lg pr-2 pl-2"
+                  onClick={() => navigate(-1)}
+                >
+                  <i className="ri-arrow-left-line text-xl md:text-2xl hover:text-[#7463df] cursor-pointer"></i>
+                  Back
+                </button>
+              </div>
+              <div className="right">
+                {' '}
+                <h1 className="text-1xl md:text-2xl font-semibold flex items-center md:items-end gap-3">
+                  Movie
+                  <span className="text-zinc-600">
+                    {category.split('_').join(' ').charAt(0).toUpperCase() +
+                      category.split('_').join(' ').slice(1)}
+                  </span>
+                </h1>
+              </div>
+            </div>
+            {/* <h1 className="text-3xl font-semibold flex items-end gap-3 mb-4 md:mb-0">
               <i
                 className="ri-arrow-left-line text-2xl hover:text-[#7463df] cursor-pointer"
                 onClick={() => navigate('/')}
@@ -61,7 +82,7 @@ const Movies = () => {
                 {category.split('_').join(' ').charAt(0).toUpperCase() +
                   category.split('_').join(' ').slice(1)}
               </span>
-            </h1>
+            </h1> */}
             <div className="flex gap-2">
               <Dropdown
                 options={['popular', 'top_rated', 'upcoming', 'now_playing']}

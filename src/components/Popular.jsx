@@ -52,7 +52,7 @@ const Popular = () => {
         <Topnav />
         <div className="w-full px-5 py-5 sm:px-10">
           <div className="flex flex-col sm:flex-row justify-between items-center">
-            <div className="flex justify-between  w-[300px] mb-3">
+            <div className="flex justify-between  w-[350px] mb-3">
               <div className="left">
                 <button
                   className="text-1xl md:text-3xl font-semibold flex items-center md:items-end gap-1 bg-red-900 rounded-lg pr-2 pl-2"
@@ -64,7 +64,7 @@ const Popular = () => {
               </div>
               <div className="right">
                 {' '}
-                <h1 className="text-1xl md:text-3xl font-semibold flex items-center md:items-end gap-3">
+                <h1 className="text-1xl md:text-2xl font-semibold flex items-center md:items-end gap-3">
                   Popular {category.charAt(0).toUpperCase() + category.slice(1)}
                   s
                 </h1>
