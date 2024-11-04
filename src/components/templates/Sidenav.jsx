@@ -1,15 +1,24 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import 'remixicon/fonts/remixicon.css'
+import { useNavigate } from 'react-router-dom'
 const Sidenav = () => {
+
+
+  const navigate = useNavigate()
   return (
     <div className="hidden md:block w-[20%] h-screen bg-zinc-800 border-r-2 border-zinc-600 p-5  flex flex-col overflow-hidden ">
-      <h1 className="text-2xl ">
+      <h1
+        className="text-2xl cursor-pointer
+        onClick={() => navigate('/')}
+      "
+        onClick={() => navigate('/')}
+      >
         <i className="ri-tv-fill text-[#6556CD] mr-2"></i>
         <span className="font-bold">SCSDB</span>
       </h1>
       <nav className="flex flex-col text-xl gap-2">
-        <h1 className="mt-10 font-semibold mb-2">New Feeds</h1>
+        <h1 className="mt-10 font-semibold mb-2 text-[#6556CD]">New Feeds</h1>
         <NavLink
           to="/trending"
           className="hover:bg-[#6556CD] hover:text-white p-5 text-zinc-300 rounded-md duration-200"
@@ -43,7 +52,7 @@ const Sidenav = () => {
       </nav>
       <hr className="border-[1px] border-zinc-700" />
       <nav className="flex flex-col  gap-2 text-xl">
-        <h1 className="mt-5 font-semibold ">Know Us</h1>
+        <h1 className="mt-5 font-semibold text-[#6556CD]">Know Us</h1>
         <NavLink
           to="/about"
           className="hover:bg-[#6556CD] hover:text-white px-5 py-3 text-zinc-300 rounded-md duration-200"

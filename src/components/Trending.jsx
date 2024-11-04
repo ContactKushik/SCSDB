@@ -51,13 +51,24 @@ const Trending = () => {
         <Topnav />
         <div className="w-full px-4 md:px-10 py-5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
-            <h1 className="text-2xl md:text-3xl font-semibold flex items-center md:items-end gap-3">
-              <i
-                className="ri-arrow-left-line text-xl md:text-2xl hover:text-[#7463df] cursor-pointer"
-                onClick={() => navigate('/')}
-              ></i>
-              Trending
-            </h1>
+            <div className="flex justify-between  w-[300px]">
+              <div className="left">
+                <button
+                  className="text-1xl md:text-3xl font-semibold flex items-center md:items-end gap-1 bg-red-900 rounded-lg pr-2 pl-2"
+                  onClick={() => navigate(-1)}
+                >
+                  <i className="ri-arrow-left-line text-xl md:text-2xl hover:text-[#7463df] cursor-pointer"></i>
+                  Back
+                </button>
+              </div>
+              <div className="right">
+                {' '}
+                <h1 className="text-1xl md:text-3xl font-semibold flex items-center md:items-end gap-3">
+                  Trending
+                </h1>
+              </div>
+            </div>
+
             <div className="flex gap-2 w-full md:w-auto justify-center md:justify-end">
               <Dropdown
                 options={['all', 'movie', 'tv']}

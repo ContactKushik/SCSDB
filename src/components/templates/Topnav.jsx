@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Loader from './Loader'
 import 'remixicon/fonts/remixicon.css' // Ensure remix icons are available
 import gsap from 'gsap'
+import { useNavigate } from 'react-router-dom'
 
 const Topnav = () => {
   const [query, setquery] = useState('')
@@ -36,10 +37,15 @@ const Topnav = () => {
     }
   }, [isMenuOpen])
 
+  const navigate = useNavigate()
+
   return searches ? (
     <div className="sticky top-0 z-50 w-full h-[10vh] flex items-center justify-between px-4 md:px-10 bg-zinc-800">
       {/* TV Icon on the left side */}
-      <div className="text-2xl text-[#6556CD] block md:hidden">
+      <div
+        className="text-2xl text-[#6556CD] block md:hidden"
+        onClick={() => navigate('/')}
+      >
         <i className="ri-tv-line"></i>
       </div>
 
@@ -109,7 +115,7 @@ const Topnav = () => {
       {isMenuOpen && (
         <div className="absolute top-[10vh] right-0 w-full   bg-zinc-800 md:hidden flex justify-around items-start p-3 gap-4 shadow-lg ">
           <div className="left flex flex-col gap-3">
-            <h1>New Feeds</h1>
+            <h1 className="text-[#6556CD]">New Feeds</h1>
             <Link
               to="/trending"
               className="mobile-menu-item text-lg text-zinc-300 hover:text-white"
@@ -142,7 +148,7 @@ const Topnav = () => {
             </Link>
           </div>
           <div className="right flex flex-col gap-3">
-            <h1>Know Us</h1>
+            <h1 className="text-[#6556CD]">Know Us</h1>
             <Link
               to="/about"
               className="mobile-menu-item text-lg text-zinc-300 hover:text-white"
