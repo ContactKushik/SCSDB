@@ -76,7 +76,7 @@ const MovieDetails = () => {
             <h1 className="text-1xl font-semibold flex  flex-col items-center gap-3 hover:text-[#7463df] cursor-pointer ">
               <i
                 className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
-                onClick={() => navigate('/')}
+                onClick={() => navigate(-1)}
               ></i>
               Movie
             </h1>

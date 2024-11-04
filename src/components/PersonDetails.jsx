@@ -31,7 +31,7 @@ const PersonDetails = () => {
       <Sidenav />
       <div className="w-full sm:w-[80%] overflow-auto overflow-x-hidden scrollbar-custom px-4 sm:px-10">
         <div className="flex items-center mb-4 bg-red-900 rounded-md pl-2">
-          <h1 className="text-1xl font-semibold flex  flex-col items-center gap-3 hover:text-[#7463df] cursor-pointer ">
+          <h1 className="text-1xl font-semibold flex flex-col items-center gap-3 hover:text-[#7463df] cursor-pointer">
             <i
               className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
               onClick={() => navigate('/')}
@@ -40,49 +40,51 @@ const PersonDetails = () => {
           </h1>
           <Topnav />
         </div>
-        <div className="flex gap-5">
-          {/* Sticky Information Div */}
-          <div className="flex flex-col shrink-0 information sticky top-0 z-10 h-[calc(100vh-80px)] overflow-auto">
+
+        {/* Mobile-friendly layout */}
+        <div className="flex flex-col md:flex-row gap-5">
+          {/* Information Div */}
+          <div className="md:w-1/3 lg:w-1/4 mb-6 md:mb-0">
             <img
               src={
                 info.details.profile_path
-                  ? `https://image.tmdb.org/t/p/original/${
-                      info.details.poster_path ||
-                      info.details.backdrop_path ||
-                      info.details.profile_path
-                    }`
+                  ? `https://image.tmdb.org/t/p/original/${info.details.profile_path}`
                   : noimg
               }
-              className="w-[32vh] sm:w-[32vh] object-cover"
-              alt=""
+              className="w-full h-auto object-cover rounded-lg shadow-lg"
+              alt={info.details.name}
             />
-            <div className="flex items-center gap-2 mt-2 overflow-x-auto overflow-y-hidden">
+            <div className="flex flex-wrap items-center gap-2 mt-4 justify-center md:justify-start">
               <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href={`https://www.imdb.com/name/${info.externalid.imdb_id}`}
+                className="inline-block"
               >
                 <img
                   src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png"
-                  alt={`${info.details.title || 'Movie'} on IMDb`}
+                  alt={`${info.details.name} on IMDb`}
+                  className="h-6"
                 />
               </a>
-              {info.external_id?.facebook_id && (
+              {info.externalid?.facebook_id && (
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href={`https://www.facebook.com/${info.external_id.facebook_id}`}
+                  href={`https://www.facebook.com/${info.externalid.facebook_id}`}
+                  className="text-2xl"
                 >
-                  <i className="ri-facebook-circle-fill text-2xl"></i>
+                  <i className="ri-facebook-circle-fill"></i>
                 </a>
               )}
-              {info.external_id?.twitter_id && (
+              {info.externalid?.twitter_id && (
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href={`https://twitter.com/${info.external_id.twitter_id}`}
+                  href={`https://twitter.com/${info.externalid.twitter_id}`}
+                  className="text-2xl"
                 >
-                  <i className="ri-twitter-x-line text-2xl"></i>
+                  <i className="ri-twitter-x-line"></i>
                 </a>
               )}
               {info.externalid?.instagram_id && (
@@ -90,8 +92,9 @@ const PersonDetails = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   href={`https://www.instagram.com/${info.externalid.instagram_id}`}
+                  className="text-2xl"
                 >
-                  <i className="ri-instagram-line text-2xl"></i>
+                  <i className="ri-instagram-line"></i>
                 </a>
               )}
               {info.externalid?.wikidata_id && (
@@ -99,6 +102,7 @@ const PersonDetails = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}
+                  className="inline-block"
                 >
                   <img
                     src="/wikipedia.ico"
@@ -108,66 +112,60 @@ const PersonDetails = () => {
                 </a>
               )}
             </div>
-            {/* Stack information vertically for mobile */}
-            <div className="mt-3">
-              <h2 className="text-xl text-zinc-400 font-semibold">
-                <span className="text-zinc-300 font-normal text-sm">
-                  Known For{' '}
-                </span>
-                <br />
+            <div className="mt-4 space-y-2 text-sm md:text-base">
+              <p>
+                <span className="text-zinc-300 font-semibold">Known For:</span>{' '}
                 {info.details.known_for_department}
-              </h2>
-              <h2 className="text-xl text-zinc-400 font-semibold">
-                <span className="text-zinc-300 font-normal text-sm">
-                  Gender{' '}
-                </span>
-                <br />
+              </p>
+              <p>
+                <span className="text-zinc-300 font-semibold">Gender:</span>{' '}
                 {info.details.gender === 1 ? 'Female' : 'Male'}
-              </h2>
-              <h2 className="text-xl text-zinc-400 font-semibold">
-                <span className="text-zinc-300 font-normal text-sm">
-                  Birthday{' '}
-                </span>
-                <br />
+              </p>
+              <p>
+                <span className="text-zinc-300 font-semibold">Birthday:</span>{' '}
                 {info.details.birthday}
-              </h2>
+              </p>
               {info.details.deathday && (
-                <h2 className="text-xl text-zinc-400 font-semibold">
-                  <span className="text-zinc-300 font-normal text-sm">
-                    Deathday{' '}
-                  </span>
-                  <br />
+                <p>
+                  <span className="text-zinc-300 font-semibold">Deathday:</span>{' '}
                   {info.details.deathday}
-                </h2>
+                </p>
               )}
               {info.details.place_of_birth && (
-                <h2 className="text-xl text-zinc-400 font-semibold">
-                  <span className="text-zinc-300 font-normal text-sm">
-                    Place of Birth
-                  </span>
-                  <br />
+                <p>
+                  <span className="text-zinc-300 font-semibold">
+                    Place of Birth:
+                  </span>{' '}
                   {info.details.place_of_birth}
-                </h2>
+                </p>
               )}
             </div>
           </div>
 
-          {/* Scrollable Content Section */}
-          <div className="flex flex-col w-full h-[calc(100vh-80px)] overflow-y-auto scrollbar-custom">
-            <h1 className="text-5xl font-black">{info.details.name}</h1>
-            <h1 className="text-2xl font-bold text-zinc-400 mt-5">Biography</h1>
-            <p className="mt-2 break-words w-[80%]">{info.details.biography}</p>
-            <h1 className="text-2xl font-bold text-zinc-400 mb-3 mt-3">
-              Known For
+          {/* Content Section */}
+          <div className="md:w-2/3 lg:w-3/4">
+            <h1 className="text-3xl md:text-5xl font-black mb-4">
+              {info.details.name}
             </h1>
-            <div>
+            <h2 className="text-xl md:text-2xl font-bold text-zinc-400 mt-5 mb-2">
+              Biography
+            </h2>
+            <p className="text-sm md:text-base mb-6">
+              {info.details.biography}
+            </p>
+
+            <h2 className="text-xl md:text-2xl font-bold text-zinc-400 mb-3">
+              Known For
+            </h2>
+            <div className="mb-6">
               <HorizontalCards data={info.combinedCredits.cast} />
             </div>
-            <div>
-              <div className="w-full flex justify-between mt-5 pb-10">
-                <h1 className="mt-5 text-2xl text-zinc-400 font-semibold">
+
+            <div className="mb-6">
+              <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
+                <h2 className="text-xl md:text-2xl text-zinc-400 font-semibold">
                   Acting
-                </h1>
+                </h2>
                 <Dropdown
                   options={['tv', 'movie']}
                   func={(e) => setCategory(e.target.value)}
@@ -177,19 +175,21 @@ const PersonDetails = () => {
               <div className="list-disc w-full h-[50vh] overflow-x-hidden overflow-y-auto shadow-xl shadow-zinc-200 border-zinc-500 p-5 text-zinc-400 scrollbar-custom">
                 {info[category + 'Credits'].cast.map((c, i) => (
                   <li
-                    className="hover:text-white duration-300 cursor-pointer hover:bg-zinc-900 rounded p-5"
+                    className="hover:text-white duration-300 cursor-pointer hover:bg-zinc-900 rounded p-3 md:p-5 mb-2"
                     key={i}
                   >
                     <Link to={`/${category}/details/${c.id}`}>
-                      <span>
+                      <span className="font-semibold">
                         {c.title ||
                           c.name ||
                           c.original_title ||
                           c.original_name}
                       </span>
-                      <span className="block ml-5 mt-2">
-                        {c.character && `Character Name: ${c.character}`}
-                      </span>
+                      {c.character && (
+                        <span className="block text-sm mt-1 text-zinc-500">
+                          Character: {c.character}
+                        </span>
+                      )}
                     </Link>
                   </li>
                 ))}

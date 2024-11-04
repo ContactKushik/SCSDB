@@ -1,3 +1,110 @@
+/* Container styling for Notfound and Notrailer */
+.notfoundContainer,
+.notrailerContainer {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Error code styling for large screens */
+.errorCode {
+  font-size: 35vh;
+}
+
+.errorMessage {
+  font-size: 5vw;
+  margin-top: 10px;
+}
+
+.errorDescription {
+  font-size: 2vw;
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .errorCode {
+    font-size: 20vh;
+  }
+
+  .errorMessage {
+    font-size: 6vh;
+  }
+
+  .errorDescription {
+    font-size: 3vh;
+    width: 90%;
+  }
+
+  .btn {
+    font-size: 2vh;
+    padding: 8px 16px;
+  }
+
+  /* Animated ball sizes */
+  .animatedBall1 {
+    width: 15px;
+    height: 15px;
+  }
+
+  .animatedBall2 {
+    width: 12px;
+    height: 12px;
+  }
+
+  .animatedBall3 {
+    width: 18px;
+    height: 18px;
+  }
+
+  .animatedBall4 {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .errorCode {
+    font-size: 18vh;
+  }
+
+  .errorMessage {
+    font-size: 5vh;
+  }
+
+  .errorDescription {
+    font-size: 2.5vh;
+  }
+
+  .btn {
+    font-size: 1.8vh;
+    padding: 6px 14px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .btn {
   z-index: 1;
   overflow: hidden;

@@ -69,11 +69,21 @@ const TvDetails = () => {
         }}
       >
         <div className="w-full px-4 md:px-10 py-5">
-          <div className="flex items-center mb-4">
+          {/* <div className="flex items-center mb-4">
             <h1 className="text-2xl md:text-3xl font-semibold flex items-center gap-3">
               <i
                 className="ri-arrow-left-line text-xl md:text-2xl hover:text-[#7463df]"
                 onClick={() => navigate('/')}
+              ></i>
+              TV
+            </h1>
+            <Topnav />
+          </div> */}
+          <div className="flex items-center mb-4 bg-red-900 rounded-md pl-2">
+            <h1 className="text-1xl font-semibold flex  flex-col items-center gap-3 hover:text-[#7463df] cursor-pointer pr-2">
+              <i
+                className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
+                onClick={() => navigate(-1)}
               ></i>
               TV
             </h1>
@@ -115,18 +125,24 @@ const TvDetails = () => {
 
               <div className="flex pt-5 px-0 gap-2 h-fit items-center">
                 {info.details.vote_average && (
-                  <div className="rounded-full text-lg md:text-xl font-semibold bg-[#6556CD] text-white w-[6vh] md:w-[8vh] h-[6vh] md:h-[8vh] flex justify-center items-center shadow-lg shadow-zinc-800 z-3">
+                  <div className="rounded-full text-sm md:text-xl font-semibold bg-[#6556CD] text-white w-[6vh] md:w-[8vh] h-[6vh] md:h-[8vh] flex justify-center items-center shadow-lg shadow-zinc-800 z-3 p-4 md:p-0">
                     {(info.details.vote_average * 10).toFixed()}
                     <sup className="text-sm font-bold">%</sup>
                   </div>
                 )}
-                <h3 className="font-semibold flex flex-col gap-[1px] leading-1">
+                <h3 className="font-semibold flex flex-col gap-[1px] leading-1 text-sm md:text-lg">
                   <span>User</span>
                   <span>Score</span>
                 </h3>
-                <h3 className="ml-5">Release: {info.details.first_air_date}</h3>
-                <h3>{info.details.genres.map((g) => g.name).join(', ')}</h3>
-                <h3>{info.details.seasons.length} Seasons</h3>
+                <h3 className="ml-5 text-sm md:text-lg">
+                  Release: {info.details.first_air_date}
+                </h3>
+                <h3 className="text-sm md:text-lg">
+                  {info.details.genres.map((g) => g.name).join(', ')}
+                </h3>
+                <h3 className="text-sm md:text-lg">
+                  {info.details.seasons.length} Seasons
+                </h3>
               </div>
 
               <h1 className="mt-5 text-sm text-zinc-300 max-w-full overflow-hidden break-words">
