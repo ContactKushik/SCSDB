@@ -12,6 +12,7 @@ import Loader from "./templates/Loader";
 import Sidenav from "./templates/Sidenav";
 import Topnav from "./templates/Topnav";
 import HorizontalCards from "./templates/HorizontalCards";
+import HorizontalCast from "./templates/HorizontalCast";
 
 const TvDetails = () => {
   document.title = "SCSDB | TV";
@@ -30,7 +31,7 @@ const TvDetails = () => {
   }, [dispatch, id]);
 
   const { info } = useSelector((state) => state.tv);
-
+  console.log(info);
 
   useEffect(() => {
     if (info && info.externalid && info.externalid.imdb_id) {
@@ -76,14 +77,14 @@ const TvDetails = () => {
             <h1 className="text-3xl font-semibold flex items-center gap-3">
               <i
                 className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
-                onClick={() => navigate("/")}
+                onClick={() => navigate(-1)}
               ></i>
               TV
             </h1>
             <Topnav />
           </div>
 
-          <hr className="border-[1px] border-zinc-700" />
+          <hr className="border-[1px] border-zinc-700 mt-3 mb-3" />
 
           {/* Movie Poster and Details in a Flex Container */}
           <div className="flex gap-10">
@@ -148,7 +149,11 @@ const TvDetails = () => {
               </h6>
               {info.videos ? (
                 <Link
-                  to={`${pathname}/trailer`}
+                  to={`${
+                    pathname.endsWith("/trailer")
+                      ? pathname
+                      : `${pathname}/trailer`
+                  }`}
                   className="mt-5 bg-[#6556CD] w-fit px-5 py-2 rounded-md flex items-center"
                 >
                   <i className="ri-play-circle-fill text-3xl font-normal"></i>
@@ -220,8 +225,8 @@ const TvDetails = () => {
               ))}
             </div>
           )}
-          <hr className="border-[1px] border-zinc-700 mt-5" />
-          <h1 className="text-3xl font-semibold text-zinc-400 mb-5">Seasons</h1>
+          <hr className="border-[1px] border-zinc-700 mt-3 mb-3" />
+          <h1 className="text-3xl font-semibold text-zinc-400 mb-2">Seasons</h1>
           <div className="flex overflow-x-auto no-scrollbar gap-5 overflow-y-hidden">
             {info.details.seasons &&
               info.details.seasons.map((season, i) => (
@@ -241,8 +246,10 @@ const TvDetails = () => {
                 </div>
               ))}
           </div>
-          <hr className="border-[1px] border-zinc-700 mt-5" />
-          <h1 className="text-3xl font-semibold text-zinc-400 mt-5">
+        
+
+          <hr className="border-[1px] border-zinc-700 mt-3 mb-3" />
+          <h1 className="text-3xl font-semibold text-zinc-400 mb-3">
             Recommendation/Similar
           </h1>
           <HorizontalCards

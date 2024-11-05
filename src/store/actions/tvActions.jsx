@@ -11,7 +11,7 @@ export const asyncloadtv = (id) => async (dispatch, getState) => {
     const videos = await axios.get(`/tv/${id}/videos`);
     const translations = await axios.get(`/tv/${id}/translations`);
     const watchproviders = await axios.get(`/tv/${id}/watch/providers`);
-
+    const reviews = await axios.get(`/tv/${id}/reviews`);
     let BigData = {
       details: detail.data,
       externalid: externalid.data,
@@ -20,6 +20,7 @@ export const asyncloadtv = (id) => async (dispatch, getState) => {
       videos: videos.data.results.find((m) => m.type === "Trailer"),
       watchproviders: watchproviders.data.results?.IN,
       translations: translations.data.translations.map((t) => t.english_name),
+      reviews: reviews.data.results, // Added `reviews` property to fetch TV reviews if needed
     };
 
     dispatch(loadTv(BigData));

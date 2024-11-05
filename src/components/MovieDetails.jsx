@@ -6,6 +6,7 @@ import Loader from "./templates/Loader";
 import Sidenav from "./templates/Sidenav";
 import Topnav from "./templates/Topnav";
 import HorizontalCards from "./templates/HorizontalCards";
+import HorizontalCast from "./templates/HorizontalCast";
 
 const MovieDetails = () => {
   const {pathname} =useLocation();
@@ -22,7 +23,7 @@ const MovieDetails = () => {
   }, [dispatch, id]);
 
   const { info } = useSelector((state) => state.movie);
-  
+  console.log(info);
 
   useEffect(() => {
     if (info && info.externalid && info.externalid.imdb_id) {
@@ -75,7 +76,7 @@ const MovieDetails = () => {
             <Topnav />
           </div>
 
-          <hr className="border-[1px] border-zinc-700" />
+          <hr className="border-[1px] border-zinc-700 mt-5 mb-5" />
 
           {/* Movie Poster and Details in a Flex Container */}
           <div className="flex gap-10">
@@ -91,7 +92,7 @@ const MovieDetails = () => {
                     }`
                   : noimg
               }
-              className="w-[38vh] object-cover mt-2 sticky"
+              className="w-[38vh] object-cover mt-2 "
               alt=""
             />
             <div className="flex flex-col w-full max-w-full">
@@ -175,6 +176,7 @@ const MovieDetails = () => {
                 </a>
               </span>
             )}
+
             {info.externalid?.wikidata_id && (
               <a
                 target="_blank"
@@ -200,22 +202,30 @@ const MovieDetails = () => {
           </div>
 
           {/* Watch Providers */}
-          {info.watchproviders && info.watchproviders.flatrate && info.watchproviders?.flatrate.length > 0 && (
-            <div className="flex gap-2 h-[10vh] mt-5">
-              {info.watchproviders.flatrate.map((w, i) => (
-                <img
-                  key={i}
-                  className="object-cover"
-                  src={`https://image.tmdb.org/t/p/original/${w.logo_path}`}
-                  alt={`Watch provider logo ${i}`}
-                />
-              ))}
-            </div>
+          {info.watchproviders &&
+            info.watchproviders.flatrate &&
+            info.watchproviders?.flatrate.length > 0 && (
+              <div className="flex gap-2 h-[10vh] mt-5">
+                {info.watchproviders.flatrate.map((w, i) => (
+                  <img
+                    key={i}
+                    className="object-cover"
+                    src={`https://image.tmdb.org/t/p/original/${w.logo_path}`}
+                    alt={`Watch provider logo ${i}`}
+                  />
+                ))}
+              </div>
+            )}
+          <hr className="border-[1px] border-zinc-700 mb-5 mt-5" />
+          <h1 className="text-3xl font-semibold text-zinc-400 mt-5 mb-3">Cast</h1>
+          {info.cast && info.cast.cast && (
+            <HorizontalCast data={info.cast.cast} className="h-fit" />
           )}
-
-          <h1 className="text-3xl font-semibold text-zinc-400 mt-5">
+          <hr className="border-[1px] border-zinc-700 mb-5 mt-5" />
+          <h1 className="text-3xl font-semibold text-zinc-400 mt-5 mb-3">
             Recommendation/Similar
           </h1>
+
           <HorizontalCards
             data={
               info.recommendations.length > 0
@@ -224,6 +234,7 @@ const MovieDetails = () => {
             }
             className="h-fit"
           />
+
           <Outlet />
         </div>
       </div>

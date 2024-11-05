@@ -11,7 +11,8 @@ export const asyncloadmovie = (id) => async (dispatch, getState) => {
     const videos = await axios.get(`/movie/${id}/videos`);
     const translations = await axios.get(`/movie/${id}/translations`);
     const watchproviders = await axios.get(`/movie/${id}/watch/providers`);
-
+    const cast = await axios.get(`/movie/${id}/credits
+`);
     let BigData = {
       details: detail.data,
       externalid: externalid.data,
@@ -20,6 +21,7 @@ export const asyncloadmovie = (id) => async (dispatch, getState) => {
       videos: videos.data.results.find((m) => m.type === "Trailer"),
       watchproviders: watchproviders.data.results?.IN, // Use optional chaining
       translations: translations.data.translations.map((t) => t.english_name),
+      cast:cast.data,
     };
 
     dispatch(loadMovie(BigData));

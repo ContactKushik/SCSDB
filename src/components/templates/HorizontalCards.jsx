@@ -23,7 +23,7 @@ const HorizontalCards = ({ data, title,fnc }) => {
                   : noimg // Replace with a valid placeholder image path
               }
               alt="Movie or TV Show"
-              className="your-css-classes-here obej h-[25dvh] object-cover " // Add any necessary CSS classes
+              className="your-css-classes-here  h-[25dvh] object-cover " // Add any necessary CSS classes
             />
             <div className="p-2">
               <h1 className="text-xl font-semibold text-zinc-100 ">
