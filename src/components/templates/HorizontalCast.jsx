@@ -31,7 +31,7 @@ const HorizontalCast = ({ data, title,fnc }) => {
             </div>
 
             <div className="p-2">
-              <h1 className="text-xl font-semibold text-zinc-100 whitespace-nowrap">
+              <h1 className="text-xl font-semibold text-zinc-100 ">
                 {ele.title ||
                   ele.name ||
                   ele.original_title ||
