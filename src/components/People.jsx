@@ -1,69 +1,85 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Sidenav from "./templates/Sidenav";
-import axios from "../utils/axios";
-import Topnav from "./templates/Topnav";
-import Dropdown from "./templates/Dropdown";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Card from "./templates/Card";
-import Loader from "./templates/Loader";
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Sidenav from './templates/Sidenav'
+import axios from '../utils/axios'
+import Topnav from './templates/Topnav'
+import Dropdown from './templates/Dropdown'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import Card from './templates/Card'
+import Loader from './templates/Loader'
 
 const People = () => {
-  document.title = "SCSDB | People";
-  const navigate = useNavigate();
-    const [category, setCategory] = useState("popular");
-    // const [duration, setDuration] = useState("day");
-    const [people, setPeople] = useState([]);
-    const [page, setPage] = useState(1);
-    const [hasMore, setHasMore] = useState(true);
-    
-    const getMovie = async () => {
-      try {
-        const { data } = await axios.get(`/person/${category}`, {
-          params: { page },
-        });
+  document.title = 'SCSDB | People'
+  const navigate = useNavigate()
+  const [category, setCategory] = useState('popular')
+  const [people, setPeople] = useState([])
+  const [page, setPage] = useState(1)
+  const [hasMore, setHasMore] = useState(true)
 
-        // If there are results, append them to people, otherwise set hasMore to false
-        if (data.results.length > 0) {
-         
-          setPeople((prev) => [...prev, ...data.results]);
-          setPage((prevPage) => prevPage + 1); // Increment page for the next fetch
-        } else {
-          setHasMore(false); // No more data to load
-        }
-      } catch (error) {
-        console.log("Error: ", error);
+  const getMovie = async () => {
+    try {
+      const { data } = await axios.get(`/person/${category}`, {
+        params: { page },
+      })
+
+      if (data.results.length > 0) {
+        setPeople((prev) => [...prev, ...data.results])
+        setPage((prevPage) => prevPage + 1)
+      } else {
+        setHasMore(false)
       }
-    };
+    } catch (error) {
+      console.log('Error: ', error)
+    }
+  }
 
-    useEffect(() => {
-      // Resetting people data and page on category or duration change
-      setPeople([]);
-      setPage(1);
-      setHasMore(true); // Reset the hasMore state
-      getMovie();
-    }, [category]);
-  return people? (
+  useEffect(() => {
+    setPeople([])
+    setPage(1)
+    setHasMore(true)
+    getMovie()
+  }, [category])
+
+  return people.length > 0 ? (
     <>
       <Sidenav />
       <div
-        className="w-[80%] h-full overflow-auto overflow-x-hidden scrollbar-custom"
+        className="w-full h-full overflow-auto overflow-x-hidden scrollbar-custom"
         id="scrollableDiv"
       >
         <Topnav />
-        <div className="w-full px-10 py-5">
-          <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-semibold flex items-end gap-3">
+        <div className="w-full px-5 py-5 sm:px-10">
+          <div className="flex flex-col sm:flex-row justify-between items-center">
+            <div className="flex justify-between w-[300px] md:w-[400px] mb-1 md:mb-0">
+              <div className="left">
+                <button
+                  className="text-1xl md:text-3xl font-semibold flex items-center md:items-end gap-1 bg-red-900 rounded-lg pr-2 pl-2"
+                  onClick={() => navigate(-1)}
+                >
+                  <i className="ri-arrow-left-line text-xl md:text-2xl hover:text-[#7463df] cursor-pointer"></i>
+                  Back
+                </button>
+              </div>
+              <div className="right">
+                {' '}
+                <h1 className="text-1xl md:text-2xl font-semibold flex items-center md:items-end gap-3">
+                  Celebrity
+                  <span className="text-zinc-600">
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </span>
+                </h1>
+              </div>
+            </div>
+            {/* <h1 className="text-2xl sm:text-3xl font-semibold flex items-end gap-3">
               <i
-                className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
-                onClick={() => navigate("/")}
+                className="ri-arrow-left-line text-xl sm:text-2xl hover:text-[#7463df]"
+                onClick={() => navigate('/')}
               ></i>
               Celebrity
               <span className="text-zinc-600">
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </span>
-            </h1>
-            
+            </h1> */}
           </div>
         </div>
         <div>
@@ -72,15 +88,16 @@ const People = () => {
             dataLength={people.length}
             next={getMovie}
             hasMore={hasMore}
-            
             scrollableTarget="scrollableDiv"
           >
-            <Card data={people} title="person"/>
+            <Card data={people} title="person" />
           </InfiniteScroll>
         </div>
       </div>
     </>
-    ):(<Loader/>)
-};
+  ) : (
+    <Loader />
+  )
+}
 
-export default People;
+export default People
