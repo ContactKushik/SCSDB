@@ -40,8 +40,8 @@ const Topnav = () => {
   const navigate = useNavigate();
 
   return searches ? (
-    <div className="sticky top-0 z-50 w-full h-[10vh] flex items-center justify-between px-4 md:px-10 bg-zinc-800">
-      {/* TV Icon on the left side for mobile */}
+    <div className="sticky md:static top-0 z-50 w-full h-[10vh] flex items-center justify-between px-4 md:px-10 bg-zinc-800 md:bg-transparent">
+    
       <div
         className="text-2xl text-[#6556CD] block md:hidden"
         onClick={() => navigate("/")}
@@ -49,7 +49,7 @@ const Topnav = () => {
         <i className="ri-tv-line"></i>
       </div>
 
-      {/* Centered Search Bar for larger screens */}
+    
       <div className="relative w-full max-w-lg lg:max-w-3xl mx-auto px-4">
         <div className="flex items-center relative">
           <i className="ri-search-2-line text-2xl absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-400 min-w-[2rem]"></i>

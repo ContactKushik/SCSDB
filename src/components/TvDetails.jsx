@@ -64,34 +64,36 @@ const TvDetails = () => {
         className="relative w-full md:w-[80%] h-full overflow-auto overflow-x-hidden scrollbar-custom"
         style={{
           background: `linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7), rgba(0,0,0,.9)), url(${backgroundUrl})`,
-          backgroundPosition: 'top 100%',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
+          backgroundPosition: "top 100%",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="w-full px-4 md:px-10 py-5">
-          {/* <div className="flex items-center mb-4">
-            <h1 className="text-2xl md:text-3xl font-semibold flex items-center gap-3">
-              <i
-                className="ri-arrow-left-line text-xl md:text-2xl hover:text-[#7463df]"
-                onClick={() => navigate('/')}
-              ></i>
-              TV
-            </h1>
-            <Topnav />
-          </div> */}
-          <div className="flex items-center mb-4 bg-red-900 rounded-md pl-2">
-            <h1 className="text-1xl font-semibold flex  flex-col items-center gap-3 hover:text-[#7463df] cursor-pointer pr-2">
+        <div className="md:hidden flex items-center bg-zinc-800 rounded md:bg-transparent  sm:hidden px-2 z-40 fixed ">
+          <h1 className="text-3xl font-semibold flex items-center gap-3 ">
+            <i
+              className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
+              onClick={() => navigate("/")}
+            ></i>
+            
+          </h1>
+          <Topnav />
+        </div>
+        <div className="w-full px-4 md:px-10 md:py-5 pt-20 relative ">
+          
+
+          <div className="hidden md:flex items-center mb-4 bg-zinc-800 rounded bg-transparent">
+            <h1 className="text-3xl font-semibold flex items-center gap-3 ">
               <i
                 className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
-                onClick={() => navigate(-1)}
+                onClick={() => navigate("/")}
               ></i>
-              TV
+              <span className="hidden md:block">TV</span>
             </h1>
             <Topnav />
           </div>
 
-          <hr className="border-[1px] border-zinc-700 mt-3 mb-3" />
+          <hr className="border-[1px] border-zinc-700 md:mt-3 md:mb-3" />
 
           <div className="flex flex-col md:flex-row gap-4 md:gap-10">
             <img
@@ -106,7 +108,7 @@ const TvDetails = () => {
                     }`
                   : noimg
               }
-              className="w-full md:w-[38vh] object-cover mt-2 md:sticky"
+              className="w-full md:w-[38vh] object-cover mt-2 md:sticky "
               alt=""
             />
             <div className="flex flex-col w-full max-w-full">
@@ -116,7 +118,7 @@ const TvDetails = () => {
                   info.details.original_title ||
                   info.details.original_name}
                 <small className="text-normal text-xl md:text-2xl text-zinc-300">
-                  ({info.details.first_air_date.split('-')[0]})
+                  ({info.details.first_air_date.split("-")[0]})
                 </small>
               </h1>
 
@@ -139,7 +141,7 @@ const TvDetails = () => {
                   Release: {info.details.first_air_date}
                 </h3>
                 <h3 className="text-sm md:text-lg">
-                  {info.details.genres.map((g) => g.name).join(', ')}
+                  {info.details.genres.map((g) => g.name).join(", ")}
                 </h3>
                 <h3 className="text-sm md:text-lg">
                   {info.details.seasons.length} Seasons
@@ -149,12 +151,12 @@ const TvDetails = () => {
               <h1 className="mt-5 text-sm text-zinc-300 max-w-full overflow-hidden break-words">
                 <span className="text font-semibold text-zinc-500">
                   Overview:
-                </span>{' '}
+                </span>{" "}
                 {info.details.overview}
               </h1>
 
               <h6 className="text-sm max-w-full overflow-hidden break-words mt-1">
-                {info.translations.join(', ')}
+                {info.translations.join(", ")}
               </h6>
               {info.videos ? (
                 <Link
@@ -255,7 +257,6 @@ const TvDetails = () => {
                 </div>
               ))}
           </div>
-        
 
           <hr className="border-[1px] border-zinc-700 mt-3 mb-3" />
           <h1 className="text-3xl font-semibold text-zinc-400 mb-3">
@@ -273,7 +274,7 @@ const TvDetails = () => {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default TvDetails

@@ -55,33 +55,39 @@ const MovieDetails = () => {
     <>
       <Sidenav />
       <div
-        className="relative w-full h-full overflow-auto overflow-x-hidden scrollbar-custom"
+        className="relative  h-full overflow-auto overflow-x-hidden scrollbar-custom md:w-[80%]"
         style={{
           background: `linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.7), rgba(0,0,0,.9)), url(${backgroundUrl})`,
-          backgroundPosition: 'top 100%',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
+          backgroundPosition: "top 100%",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="w-full px-4 py-5 md:px-10">
-          {' '}
-          {/* Adjusted padding for mobile */}
-          {/* Header with navigation */}
-          <div className="flex items-center mb-4 bg-red-900 rounded-md pl-2">
-            <h1 className="text-1xl font-semibold flex  flex-col items-center gap-3 hover:text-[#7463df] cursor-pointer ">
+        <div className="md:hidden flex items-center bg-zinc-800 rounded md:bg-transparent  sm:hidden px-2 z-40 fixed ">
+          <h1 className="text-3xl font-semibold flex items-center gap-3 ">
+            <i
+              className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
+              onClick={() => navigate("/")}
+            ></i>
+          </h1>
+          <Topnav />
+        </div>
+        <div className="w-full px-4 md:py-5 md:px-10 pt-20">
+          
+          
+          <div className="hidden md:flex items-center mb-4 bg-zinc-800 rounded bg-transparent">
+            <h1 className="text-3xl font-semibold flex items-center gap-3 ">
               <i
                 className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
-                onClick={() => navigate(-1)}
+                onClick={() => navigate("/")}
               ></i>
-              Movie
+              <span className="hidden md:block">Movie</span>
             </h1>
             <Topnav />
           </div>
-
           <hr className="border-[1px] border-zinc-700 mt-5 mb-5" />
-
-          {/* Movie Poster and Details in a Flex Container */}
-          <div className="flex flex-col md:flex-row gap-10">
+         
+          <div className="flex flex-col md:flex-row md:gap-10 ">
             <img
               src={
                 info.details.poster_path ||
@@ -94,17 +100,17 @@ const MovieDetails = () => {
                     }`
                   : noimg
               }
-              className="w-[38vh] object-cover mt-2 md:w-[38vh] sticky"
+              className="w-[38vh] object-cover md:mt-2 md:w-[38vh] sticky"
               alt=""
             />
             <div className="flex flex-col w-full">
-              <h1 className="text-5xl font-bold text-zinc-100 mt-4 flex items-end gap-5 shadow-md shadow-zinc-800 w-fit">
+              <h1 className="text-5xl font-bold text-zinc-100 md:mt-4 flex items-end gap-5 shadow-md shadow-zinc-800 w-fit">
                 {info.details.title ||
                   info.details.name ||
                   info.details.original_title ||
                   info.details.original_name}
                 <small className="text-normal text-2xl text-zinc-300">
-                  ({info.details.release_date.split('-')[0]})
+                  ({info.details.release_date.split("-")[0]})
                 </small>
               </h1>
 
@@ -115,7 +121,7 @@ const MovieDetails = () => {
               {/* User Score and Info */}
               <div className="flex pt-5 px-0 gap-2 h-fit items-center">
                 {info.details.vote_average && (
-                  <div className="rounded-full text-xl font-semibold bg-[#6556CD] gap-[-10px] text-white w-[8vh] h-[8vh] flex justify-center items-center shadow-lg shadow-zinc-800 z-3">
+                  <div className="flex-shrink-0 rounded-full text-xl font-semibold bg-[#6556CD] gap-[-10px] text-white w-[8vh] h-[8vh] flex justify-center items-center shadow-lg shadow-zinc-800 z-3">
                     {(info.details.vote_average * 10).toFixed()}
                     <sup className="text-sm font-bold">%</sup>
                   </div>
@@ -125,7 +131,7 @@ const MovieDetails = () => {
                   <span>Score</span>
                 </h3>
                 <h3 className="ml-5">Release: {info.details.release_date}</h3>
-                <h3>{info.details.genres.map((g) => g.name).join(', ')}</h3>
+                <h3>{info.details.genres.map((g) => g.name).join(", ")}</h3>
                 <h3>{info.details.runtime} min</h3>
               </div>
 
@@ -133,13 +139,13 @@ const MovieDetails = () => {
               <h1 className="mt-5 text-sm text-zinc-300 max-w-full overflow-hidden break-words">
                 <span className="text font-semibold text-zinc-500">
                   Overview:
-                </span>{' '}
+                </span>{" "}
                 {info.details.overview}
               </h1>
 
               {/* Translations Section */}
               <h6 className="text-sm max-w-full overflow-hidden break-words mt-1">
-                {info.translations.join(', ')}
+                {info.translations.join(", ")}
               </h6>
               {info.videos ? (
                 <Link
@@ -172,7 +178,7 @@ const MovieDetails = () => {
                 >
                   <img
                     src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_46x22.png"
-                    alt={`${info.details.title || 'Movie'} on IMDb`}
+                    alt={`${info.details.title || "Movie"} on IMDb`}
                   />
                 </a>
               </span>
@@ -217,16 +223,17 @@ const MovieDetails = () => {
               </div>
             )}
           <hr className="border-[1px] border-zinc-700 mb-5 mt-5" />
-          <h1 className="text-3xl font-semibold text-zinc-400 mt-5 mb-3">Cast</h1>
+          <h1 className="text-3xl font-semibold text-zinc-400 mt-5 mb-3">
+            Cast
+          </h1>
           {info.cast && info.cast.cast && (
             <HorizontalCast data={info.cast.cast} className="h-fit" />
           )}
           <hr className="border-[1px] border-zinc-700 mb-5 mt-5" />
-          <h1 className="text-3xl font-semibold text-zinc-400 mt-5 mb-3"/>
+          <h1 className="text-3xl font-semibold text-zinc-400 mt-5 mb-3" />
           <h1 className="text-3xl font-semibold text-zinc-400 mt-5">
             Recommendation/Similar
           </h1>
-
           <HorizontalCards
             data={
               info.recommendations.length > 0
@@ -235,12 +242,11 @@ const MovieDetails = () => {
             }
             className="h-fit"
           />
-
           <Outlet />
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default MovieDetails

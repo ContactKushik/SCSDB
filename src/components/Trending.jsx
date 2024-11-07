@@ -66,7 +66,7 @@ const Trending = () => {
                 </h1>
               </div>
             </div>
-            <div className="flex gap-2 sm:px-10 w-[55vh] px-10 flex:wrap sm:items-start ">
+            <div className="flex gap-2 sm:px-10 w-[55vh] md:w-full px-10 flex:wrap sm:items-start md:pr-0">
               <Dropdown
                 options={["all", "movie", "tv"]}
                 func={(e) => setCategory(e.target.value)}
