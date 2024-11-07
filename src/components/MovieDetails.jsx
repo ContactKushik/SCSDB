@@ -75,7 +75,7 @@ const MovieDetails = () => {
         <div className="w-full px-4 md:py-5 md:px-10 pt-20">
           
           
-          <div className="hidden md:flex items-center mb-4 bg-zinc-800 rounded bg-transparent">
+          <div className="hidden md:flex items-center mb-4 bg-zinc-800 rounded md:bg-transparent">
             <h1 className="text-3xl font-semibold flex items-center gap-3 ">
               <i
                 className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
