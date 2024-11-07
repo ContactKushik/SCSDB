@@ -43,8 +43,8 @@ const PersonDetails = () => {
 
         {/* Mobile-friendly layout */}
         <div className="flex flex-col md:flex-row gap-5">
-          {/* Sticky Information Div for medium to large screens */}
-          <div className="md:w-1/3 lg:w-1/4 mb-6 md:mb-0 sticky top-0 md:h-[calc(100vh-80px)] overflow-auto">
+          {/* Sticky Information Div for large screens */}
+          <div className="md:w-1/3 lg:w-1/4 mb-6 md:mb-0 lg:sticky lg:top-0 md:h-[calc(100vh-80px)] overflow-auto">
             <img
               src={
                 info.details.profile_path
