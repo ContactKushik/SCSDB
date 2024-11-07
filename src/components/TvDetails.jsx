@@ -69,20 +69,17 @@ const TvDetails = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="md:hidden flex items-center bg-zinc-800 rounded md:bg-transparent  sm:hidden px-2 z-40 fixed ">
+        <div className="md:hidden flex items-center bg-zinc-800 rounded   sm:hidden px-2 z-40 fixed ">
           <h1 className="text-3xl font-semibold flex items-center gap-3 ">
             <i
               className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
               onClick={() => navigate("/")}
             ></i>
-            
           </h1>
           <Topnav />
         </div>
         <div className="w-full px-4 md:px-10 md:py-5 pt-20 relative ">
-          
-
-          <div className="hidden md:flex items-center mb-4 bg-zinc-800 rounded bg-transparent">
+          <div className="hidden md:flex items-center mb-4 bg-zinc-800 rounded bg-transparent md:bg-transparent">
             <h1 className="text-3xl font-semibold flex items-center gap-3 ">
               <i
                 className="ri-arrow-left-line text-2xl hover:text-[#7463df]"
