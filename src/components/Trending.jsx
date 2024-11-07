@@ -49,20 +49,19 @@ const Trending = () => {
         id="scrollableDiv"
       >
         <Topnav />
-        <div className="w-full px-4 md:px-10 py-5">
+        <div className="w-full px-4 md:px-10 py-5 sm:px-10 md:pl-0 sm:px-2">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
-            <div className="flex justify-between md:justify-normal  w-[300px]">
+            <div className="flex justify-between md:justify-normal w-full">
               <div className="left">
                 <button
-                  className="text-1xl md:text-3xl font-semibold flex items-center md:items-end gap-1  rounded-lg pr-2 pl-0 md:pl-2"
+                  className="text-1xl md:text-3xl font-semibold flex items-center md:items-end gap-1  rounded-lg pr-2 pl-0 md:pl-5"
                   onClick={() => navigate(-1)}
                 >
                   <i className="ri-arrow-left-line text-xl md:text-2xl hover:text-[#7463df] cursor-pointer"></i>
-                  
                 </button>
               </div>
               <div className="right">
-                {' '}
+                {" "}
                 <h1 className="text-1xl md:text-3xl font-semibold flex items-center md:items-end gap-3">
                   Trending
                 </h1>
@@ -71,19 +70,19 @@ const Trending = () => {
 
             <div className="flex gap-2 w-full md:w-auto justify-center md:justify-end">
               <Dropdown
-                options={['all', 'movie', 'tv']}
+                options={["all", "movie", "tv"]}
                 func={(e) => setCategory(e.target.value)}
-                title={'category'}
+                title={"category"}
               />
               <Dropdown
-                options={['day', 'week']}
+                options={["day", "week"]}
                 func={(e) => setDuration(e.target.value)}
-                title={'duration'}
+                title={"duration"}
               />
             </div>
           </div>
         </div>
-        <div className="px-2 md:px-0">
+        <div className="px-2 md:px-5">
           <InfiniteScroll
             loader={
               <div className="text-center py-4">
@@ -102,7 +101,7 @@ const Trending = () => {
     </>
   ) : (
     <Loader />
-  )
+  );
 }
 
 export default Trending
