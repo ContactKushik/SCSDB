@@ -72,7 +72,8 @@ const Movies = () => {
               <Dropdown
                 options={["popular", "top_rated", "upcoming", "now_playing"]}
                 func={(e) => setCategory(e.target.value)}
-                title={"category"}
+                title={category}
+                key={category} // force re-render of Dropdown when category changes
               />
             </div>
           </div>

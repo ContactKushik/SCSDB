@@ -70,7 +70,7 @@ const Popular = () => {
               <Dropdown
                 options={["movie", "tv"]}
                 func={(e) => setCategory(e.target.value)}
-                title={"category"}
+                title={category}
               />
             </div>
           </div>

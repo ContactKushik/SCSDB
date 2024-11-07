@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 
 const Dropdown = ({ title, options, func }) => {
   return (
-    <div className="select" >
+    <div className="select">
       <select defaultValue="0" name="format" id="format" onChange={func}>
         <option value="0" disabled>
           {title}
@@ -14,7 +14,7 @@ const Dropdown = ({ title, options, func }) => {
         ))}
       </select>
     </div>
-  )
-}
+  );
+};
 
-export default Dropdown
+export default Dropdown;

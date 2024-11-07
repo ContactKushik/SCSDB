@@ -65,11 +65,7 @@ const People = () => {
               </h1>
             </div>
             <div className="flex gap-2">
-              <Dropdown
-                options={["popular"]}
-                func={(e) => setCategory(e.target.value)}
-                title={"category"}
-              />
+              
             </div>
           </div>
         </div>

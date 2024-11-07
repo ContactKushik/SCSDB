@@ -72,7 +72,7 @@ const Tvshows = () => {
               <Dropdown
                 options={["airing_today", "on_the_air", "popular", "top_rated"]}
                 func={(e) => setCategory(e.target.value)}
-                title={"category"}
+                title={category}
               />
             </div>
           </div>
