@@ -51,14 +51,14 @@ const Trending = () => {
         <Topnav />
         <div className="w-full px-4 md:px-10 py-5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
-            <div className="flex justify-between  w-[300px]">
+            <div className="flex justify-between md:justify-normal  w-[300px]">
               <div className="left">
                 <button
-                  className="text-1xl md:text-3xl font-semibold flex items-center md:items-end gap-1 bg-red-900 rounded-lg pr-2 pl-2"
+                  className="text-1xl md:text-3xl font-semibold flex items-center md:items-end gap-1  rounded-lg pr-2 pl-0 md:pl-2"
                   onClick={() => navigate(-1)}
                 >
                   <i className="ri-arrow-left-line text-xl md:text-2xl hover:text-[#7463df] cursor-pointer"></i>
-                  Back
+                  
                 </button>
               </div>
               <div className="right">
