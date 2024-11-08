@@ -13,7 +13,7 @@ import TvDetails from "./components/TvDetails";
 import PersonDetails from "./components/PersonDetails";
 import Trailer from "./components/templates/Trailer";
 import Notfound from "./components/templates/Notfound";
-
+import { SpeedInsights } from "@vercel/speed-insights/react";
 const App = () => {
   return (
     <div className="w-[100%] h-screen bg-zinc-800 flex">
@@ -22,20 +22,21 @@ const App = () => {
         <Route path="/trending" element={<Trending />} />
         <Route path="/popular" element={<Popular />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movie/details/:id" element={<MovieDetails />} >
-          <Route path="/movie/details/:id/trailer" element={<Trailer/>} />
+        <Route path="/movie/details/:id" element={<MovieDetails />}>
+          <Route path="/movie/details/:id/trailer" element={<Trailer />} />
         </Route>
         {/* Moved this out */}
         <Route path="/tv" element={<Tvshows />} />
-        <Route path="/tv/details/:id" element={<TvDetails />} >
-          <Route path="/tv/details/:id/trailer" element={<Trailer/>}/>
+        <Route path="/tv/details/:id" element={<TvDetails />}>
+          <Route path="/tv/details/:id/trailer" element={<Trailer />} />
         </Route>
         <Route path="/person" element={<People />} />
         <Route path="/person/details/:id" element={<PersonDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<ContactUs />} />
-        <Route path="/*" element={<Notfound/>}/>
+        <Route path="/*" element={<Notfound />} />
       </Routes>
+      <SpeedInsights />
     </div>
   );
 };
