@@ -14,6 +14,7 @@ import PersonDetails from "./components/PersonDetails";
 import Trailer from "./components/templates/Trailer";
 import Notfound from "./components/templates/Notfound";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 const App = () => {
   return (
     <div className="w-[100%] h-screen bg-zinc-800 flex">
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/*" element={<Notfound />} />
       </Routes>
+      <Analytics />
       <SpeedInsights />
     </div>
   );
