@@ -1,5 +1,5 @@
 
-# SCSDB (Simple Cinema Search and Display)
+# SCSDB (Super Comprehensive Streaming Database)
 
 SCSDB is a React-based application built to demonstrate practical expertise in React and related technologies. It fetches movie and TV show data from The Movie Database (TMDB) API and provides a user-friendly interface for browsing trending content, searching for movies, and viewing detailed media information.
 
@@ -103,5 +103,5 @@ SCSDB/
 
 ## Author
 
-Developed by [Your Name](https://your-portfolio-url.com).  
+Developed by Kushik Sahu  
 Feel free to reach out for suggestions, contributions, or collaborations.
